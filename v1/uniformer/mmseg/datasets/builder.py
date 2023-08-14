@@ -10,13 +10,14 @@ from custom_nodes.comfy_controlnet_preprocessors.v1.uniformer.mmcv.utils import 
 from custom_nodes.comfy_controlnet_preprocessors.v1.uniformer.mmcv.utils.parrots_wrapper import DataLoader, PoolDataLoader
 from torch.utils.data import DistributedSampler
 
-if platform.system() != 'Windows':
-    # https://github.com/pytorch/pytorch/issues/973
-    import resource
-    rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
-    hard_limit = rlimit[1]
-    soft_limit = min(4096, hard_limit)
-    resource.setrlimit(resource.RLIMIT_NOFILE, (soft_limit, hard_limit))
+# BUG: Have crash in RunPod so disabled that... 
+#if platform.system() != 'Windows':
+#    # https://github.com/pytorch/pytorch/issues/973
+#    import resource
+#    rlimit = resource.getrlimit(resource.RLIMIT_NOFILE)
+#    hard_limit = rlimit[1]
+#    soft_limit = min(4096, hard_limit)
+#    resource.setrlimit(resource.RLIMIT_NOFILE, (soft_limit, hard_limit))
 
 DATASETS = Registry('dataset')
 PIPELINES = Registry('pipeline')
