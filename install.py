@@ -55,5 +55,5 @@ from custom_nodes.comfy_controlnet_preprocessors.v1 import canny, hed_v1, midas,
 from custom_nodes.comfy_controlnet_preprocessors.v11 import zoe, normalbae, hed_v11, pidinet_v11
 
 sleep(2)
-#download_models()
+download_models()
 print("Done!")
